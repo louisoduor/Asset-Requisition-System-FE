@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Login = () => {
+const SignUp = () => {
     const [formData, setFormData] = useState({
         email:"",
         password:""
@@ -59,7 +59,7 @@ const Login = () => {
                 </div>
                 <div className="mt-4 text-sm font-bold">
                     <button type="submit"className="px-5 py-2  bg-orange-500 text-white uppercase rounded border-0">
-                        login
+                        sign up
                     </button>
                 </div>
             </form>
@@ -67,4 +67,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;

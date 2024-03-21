@@ -10,6 +10,7 @@ import UserAccountPage from './User/accountUser'
 import UserMainPage from './User/mainpageUser'
 import MyRequestPage from './User/myRequest'
 import RequestFormPage from './User/requestForm'
+import SignUp from './Auth/Signup'
 import Login from './Auth/Login'
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   return (
     <div className='bg-gray-50'>
     {/* LOGIN */}
-    
+    <SignUp/>
     <Login/>
     {/* ADMIN */}
     <AdminMainPage/>
