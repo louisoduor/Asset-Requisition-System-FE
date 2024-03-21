@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import UserAccountPage from './accountUser'; // Import the AccountPage component
+import  { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+// import UserAccountPage from './accountUser'; // Import the AccountPage component
 
 
 function UserMainPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [devices, setDevices] = useState([]);
-    const [showAccountPage, setShowAccountPage] = useState(false); // State to control whether to show the account page
+   
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    const handleLinkClick = () => {
-        setIsSidebarOpen(false);
-        setShowAccountPage(true); // Set showAccountPage to true when clicking the account link
-    };
+
 
     useEffect(() => {
         const fetchedDevices = [
@@ -29,38 +27,13 @@ function UserMainPage() {
     }, []);
 
     return (
-        <div className="relative flex h-screen">
-            {/* Sidebar */}
-            <div className={`bg-blue-950 text-white w-64 flex flex-col ${isSidebarOpen ? '' : 'hidden sm:flex'}`}>
-                <div className="flex items-center justify-center px-4 py-6">
-                    <img src="./src/assets/logo2.png" alt="Logo" className="h-26 w-29 mb-12" />
-                </div>
-
-                <div className="flex items-center justify-center mb-2">
-                    <div className="h-8 w-8 bg-gray-300 rounded-full"></div>
-                </div>
-
-                <div className="text-center mb-2 text-lg font-bold cursor-pointer" onClick={handleLinkClick}>Account</div>
-
-                <nav className="flex-1 flex flex-col">
-                    <ul>
-                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                            <span className="text-lg font-bold">Dashboard</span>
-                        </li>
-                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                            <span className="text-lg font-bold">MyRequests</span>
-                        </li>
-                       
-                    </ul>
-                </nav>
-                <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">Logout</button>
-            </div>
+        <div className="relative flex grow mr-5 h-screen">
 
             {/* Conditional rendering of the AccountPage component */}
-            {showAccountPage && <UserAccountPage />}
+            {/* {showAccountPage && <UserAccountPage />} */}
 
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <img src="./src/assets/LOGO.png" alt="Logo" className="h-80 w-80 opacity-30" style={{ margin: 'auto' }} />
+                <img src="../src/assets/LOGO.png" alt="Logo" className="h-80 w-80 opacity-30" style={{ margin: 'auto' }} />
             </div>
 
             <div className="flex flex-col flex-1 ml-5">
@@ -102,7 +75,7 @@ function UserMainPage() {
                                     <td className="border px-4 py-2">{device.status}</td>
                                     <td className="border px-4 py-2">
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                                            Request
+                                        <Link to ="request-form" className='capitalize'>Request</Link>   
                                         </button>
                                     </td>
                                 </tr>

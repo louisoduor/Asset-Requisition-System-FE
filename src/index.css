@@ -6,6 +6,7 @@
 *::before,
 *::after{
     box-sizing: border-box;
+    
 }
 
 /* Set core root defaults */
@@ -18,7 +19,7 @@ body{
 }
 /* Set core body defaults */
 body {
-    
+    background:rgb(236, 236, 236);
     text-rendering: optimizeSpeed;
     line-height: 1.5;
 }
@@ -64,3 +65,10 @@ margin-inline: auto;
     width:min(var(--max-width),80%);   
     
 }
+
+.aside{
+    --max-width:16em; 
+    width:min( var(--max-width), 45%);
+    height: 100dvh;
+}
+
