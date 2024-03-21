@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function UserAccountPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -39,7 +39,7 @@ function UserAccountPage() {
             {/* Sidebar */}
             <div className={`bg-blue-950 text-white w-64 flex flex-col ${isSidebarOpen ? '' : 'hidden sm:flex'}`}>
                 <div className="flex items-center justify-center px-4 py-6">
-                    <img src="./src/assets/logo2.png" alt="Logo" className="h-26 w-29 mb-12" />
+                    <img src="../src/assets/logo2.png" alt="Logo" className="h-26 w-29 mb-12" />
                 </div>
 
                 <div className="flex items-center justify-center mb-2">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function AssignFormPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,9 +16,7 @@ function AssignFormPage() {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    const handleLinkClick = () => {
-        setIsSidebarOpen(false);
-    };
+
 
     const handleAssignAsset = () => {
         // Perform actions to assign the asset, such as sending data to a backend API
@@ -47,38 +45,10 @@ function AssignFormPage() {
     };
 
     return (
-        <div className="relative flex h-screen">
-            {/* Sidebar */}
-            <div className={`bg-blue-950 text-white w-64 flex flex-col ${isSidebarOpen ? '' : 'hidden sm:flex'}`}>
-                <div className="flex items-center justify-center px-4 py-6">
-                    <img src="./src/assets/logo2.png" alt="Logo" className="h-26 w-29 mb-12" />
-                </div>
-
-                <div className="flex items-center justify-center mb-2">
-                    <div className="h-8 w-8 bg-gray-300 rounded-full"></div>
-                </div>
-
-                <div className="text-center mb-2 text-lg font-bold cursor-pointer">Account</div>
-
-                <nav className="flex-1 flex flex-col">
-                    <ul>
-                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                            <span className="text-lg font-bold" onClick={handleLinkClick}>Dashboard</span>
-                        </li>
-                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                            <span className="text-lg font-bold" onClick={handleLinkClick}>Requests</span>
-                        </li>
-                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                            <span className="text-lg font-bold" onClick={handleLinkClick}>A. Available</span>
-                        </li>
-                    </ul>
-                </nav>
-                <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">Logout</button>
-            </div>
-
+        <div className="relative flex grow h-screen">
             {/* Logo Watermark */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <img src="./src/assets/LOGO.png" alt="Logo" className="h-80 w-80 opacity-30" />
+                <img src="../src/assets/LOGO.png" alt="Logo" className="h-80 w-80 opacity-30" />
             </div>
 
             {/* Main Content */}

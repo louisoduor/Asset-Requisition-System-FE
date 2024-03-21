@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -20,10 +21,10 @@ const Login = () => {
     };
     
     return (
-        <div className="form-container my-20 ">
+        <div className="form-container mt-20 ">
             <form
                 onSubmit={handleSubmit}
-                className="form flex flex-col items-center gap-y-3 shadow "
+                className="form flex flex-col items-center gap-y-3 bg-white shadow "
             >
                 <img src="src/assets/LOGO.png" alt="" />
                 <div className="flex flex-col gap-y-3">
@@ -58,10 +59,11 @@ const Login = () => {
                     />
                 </div>
                 <div className="mt-4 text-sm font-bold">
-                    <button type="submit"className="px-5 py-2  bg-orange-500 text-white uppercase rounded border-0">
+                    <button type="submit"className="px-5 py-2 hover:bg-blue-900 bg-orange-500 text-white uppercase rounded border-0">
                         login
                     </button>
                 </div>
+                <div><Link to="/signup"className="text-blue-900 hover:text-orange-400 font-bold capitalize underline">create account</Link></div>
             </form>
         </div>
     );
