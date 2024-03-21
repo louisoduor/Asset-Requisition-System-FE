@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 
 import './App.css'
 import AdminMainPage from './Admin/mainpageAdmin'
@@ -10,16 +10,16 @@ import UserAccountPage from './User/accountUser'
 import UserMainPage from './User/mainpageUser'
 import MyRequestPage from './User/myRequest'
 import RequestFormPage from './User/requestForm'
-import LoginPage from './Auth/login'
+import Login from './Auth/Login'
 
 function App() {
 
 
   return (
-    <>
+    <div className='bg-gray-50'>
     {/* LOGIN */}
-    <LoginPage/>
-
+    
+    <Login/>
     {/* ADMIN */}
     <AdminMainPage/>
     <RequestAdminPage/>
@@ -33,7 +33,7 @@ function App() {
     <MyRequestPage/>
     <RequestFormPage/>
 
-    </>
+    </div>
   )
 }
 
