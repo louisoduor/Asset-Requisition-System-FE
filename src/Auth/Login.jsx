@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+// import {auth} from '../config/firebaseConfig'
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ const Login = () => {
     
     return (
         <div className="form-container mt-20 ">
+        
             <form
                 onSubmit={handleSubmit}
                 className="form flex flex-col items-center gap-y-3 bg-white shadow "

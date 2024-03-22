@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import './App.css';
+
+import AdminMainPage from './Admin/AdminMainPage';
+
 import RequestAdminPage from './Admin/Requests';
 
 
@@ -8,13 +10,17 @@ import RequestAdminPage from './Admin/Requests';
 import MyRequestPage from './User/myRequest';
 
 
-import LandingPage from './Auth/LandingPage';
+
 import SignUp from './Auth/Signup';
 import Login from './Auth/Login';
 
 
 
 import AssignFormPage from './Admin/assign';
+
+import UserSharedComponent from './User/UserSharedComponent';
+import AuthSharedComponent from './Auth/AuthSharedComponent';
+
 
 
 import AvailableAssets from './User/availableAssets';
@@ -31,15 +37,21 @@ import Request from './User/RequestForm';
 
 
 
+
 function App() {
     return (
         <BrowserRouter>
-            {/* LOGIN */}
             <Routes>
-                <Route path="/" element={<LandingPage />}>
+            {/* LOGIN */}
+                <Route path="/" element={<AuthSharedComponent/>}>
                     <Route index element={<Login />} />
                     <Route path="signup" element={<SignUp />} />
                 </Route>
+
+                {/* ADMIN */}
+                <Route path="admin" element={<AdminSharedComponent />}>
+                    <Route index element={<AdminMainPage />} />
+
 
                 
 
@@ -47,7 +59,7 @@ function App() {
 
                 <Route path="admin"  element= {<AdminSharedComponent/>}>
                     <Route index element={<AdminDashboard/>} />
-                   
+
                     <Route
                         path="admin-account"
                         index element={<AdminProfile />}
@@ -100,13 +112,6 @@ function App() {
                 </Route>
             </Routes>
         </BrowserRouter>
-
-        // <AdminMainPage/>
-        // <RequestAdminPage/>
-        // <AddAssetPage/>
-        // <AssignFormPage/>
-        // <AdminSharedComponent/>
-        // <AccountAdminPage/>
     );
 }
 
