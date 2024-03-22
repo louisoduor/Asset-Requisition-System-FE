@@ -8,7 +8,7 @@ const Login = () => {
         email:"",
         password:""
     });
-
+console.log(auth?.currentUser?.email)
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
