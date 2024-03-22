@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import LOGO from "/src/assets/LOGO.png"
 
-function  RequestFormPage() {
+
+function  RequestForm() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -46,28 +48,14 @@ function  RequestFormPage() {
 
     return (
         <div className="relative flex grow h-screen">
-
-
-            {/* Logo Watermark */}
+         {/* Logo Watermark */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <img src="../src/assets/LOGO.png" alt="Logo" className="h-80 w-80 opacity-30" />
+                <img src={LOGO} alt="Logo" className="h-80 w-80 opacity-30" />
             </div>
 
             {/* Main Content */}
             <div className="flex flex-col flex-1">
                 <div className="text-lg font-bold pl-4 py-2 text-orange-500">
-                    {/* Three Dots */}
-                    <button onClick={toggleSidebar} className="sm:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 mr-4 inline-block"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
                     REQUEST FORM (USER)
                 </div>
 
@@ -145,4 +133,4 @@ function  RequestFormPage() {
     );
 }
 
-export default RequestFormPage;
+export default RequestForm;

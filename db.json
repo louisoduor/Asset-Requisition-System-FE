@@ -1,0 +1,72 @@
+[
+    {
+      "name": "Monitor",
+      "serial": "MON/02/ars ",
+      "brand": "LG",
+      "model": "LG 27U-W",
+      "id": "10"
+    },
+    {
+      "name": "Monitor",
+      "serial": "mon/01/ars",
+      "brand": "ASUS",
+      "model": "VG27AQ",
+      "id": "16"
+    },
+    {
+      "name": "Scanner",
+      "serial": "scanner/02/ars",
+      "brand": "Epson",
+      "model": "perfection V600",
+      "id": "17"
+    },
+    {
+      "name": "Scanner",
+      "serial": "scanner/01/ars",
+      "brand": "Fujitsu",
+      "model": "ScanSnap iX1500",
+      "id": "18"
+    },
+    {
+      "name": "Projector",
+      "serial": "PROJECTOR/02/ars",
+      "brand": "BenQ",
+      "model": "HT2050A",
+      "id": "19"
+    },
+    {
+      "name": "Projector",
+      "serial": "projector/01/ars",
+      "brand": "Optoma",
+      "model": "HD146X",
+      "id": "20"
+    },
+    {
+      "name": "Printer",
+      "serial": "printer/02/ars",
+      "brand": "Epson",
+      "model": "EcoTank",
+      "id": "24"
+    },
+    {
+      "name": "Printer",
+      "serial": "printer/01/ars",
+      "brand": "Epson",
+      "model": "PIXMA",
+      "id": "30"
+    },
+    {
+      "name": "Laptop",
+      "serial": "lap/02/ars",
+      "brand": "Apple",
+      "model": "MacBook",
+      "id": "31"
+    },
+    {
+      "name": "Laptop",
+      "serial": "lap/01/ars",
+      "brand": "Dell",
+      "model": "XPS3",
+      "id": "34"
+    }
+  ]
