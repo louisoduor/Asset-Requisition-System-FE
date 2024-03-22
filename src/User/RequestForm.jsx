@@ -1,135 +1,108 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import LOGO from "/src/assets/LOGO.png"
+import emailjs from '@emailjs/browser';
 
-function  RequestFormPage() {
+function Request() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-
-
-    // State for request form fields
-    const [assetName, setAssetName] = useState('');
-    const [serialNumber, setSerialNumber] = useState('');
-    const [brand, setBrand] = useState('');
-    const [model, setModel] = useState('');
-    const [staffNo, setStaffNo] = useState('');
-    const [email, setEmail] = useState('');
-    const [department, setDepartment] = useState('');
-    const [dateOfRequest, setDateOfRequest] = useState('');
+    const form = useRef();
 
     // Function to handle form submission
-    const handleSubmitRequest = (e) => {
+    const sendEmail = (e) => {
         e.preventDefault();
-        // Perform actions with form data, e.g., send it to the backend
-        console.log('Request submitted:', {
-            assetName,
-            serialNumber,
-            brand,
-            model,
-            staffNo,
-            email,
-            department,
-            dateOfRequest
-        });
-        // Reset form fields after submission
-        setAssetName('');
-        setSerialNumber('');
-        setBrand('');
-        setModel('');
-        setStaffNo('');
-        setEmail('');
-        setDepartment('');
-        setDateOfRequest('');
+
+        emailjs
+            .sendForm('service_gwwblky', 'template_h29807b', form.current, {
+                publicKey: '-MNWCUnnZC-W7eIVt',
+            })
+            .then(
+                () => {
+                    alert('REQUEST SUMBMITED SUCCESSFULLY!');
+                    // Reset the form after successful submission
+                    form.current.reset();
+                },
+                (error) => {
+                    alert('FAILED...', error.text);
+                },
+            );
     };
 
     return (
-        <div className="relative flex grow h-screen">
-
-
+        <div className="relative flex grow h-screen ">
             {/* Logo Watermark */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <img src="../src/assets/LOGO.png" alt="Logo" className="h-80 w-80 opacity-30" />
+                <img src={LOGO} alt="Logo" className="h-80 w-80 opacity-30" />
             </div>
 
             {/* Main Content */}
             <div className="flex flex-col flex-1">
                 <div className="text-lg font-bold pl-4 py-2 text-orange-500">
-                    {/* Three Dots */}
-                    <button onClick={toggleSidebar} className="sm:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 mr-4 inline-block"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
                     REQUEST FORM (USER)
                 </div>
 
                 <div className="flex-1 bg-gray-200 p-4">
                     {/* Request Form */}
-                    <form onSubmit={handleSubmitRequest}>
+                    <form ref={form} onSubmit={sendEmail}>
                         <div className="mb-4">
                             <input
                                 type="text"
                                 placeholder="Asset Name"
                                 className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={assetName}
-                                onChange={(e) => setAssetName(e.target.value)}
+                                name='asset_name'
+                                required
                             />
                             <input
                                 type="text"
                                 placeholder="Serial Number"
                                 className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={serialNumber}
-                                onChange={(e) => setSerialNumber(e.target.value)}
+                                name='serial_no'
+                                required
                             />
                             <input
                                 type="text"
                                 placeholder="Brand"
                                 className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={brand}
-                                onChange={(e) => setBrand(e.target.value)}
+                                name='brand_name'
+                                required
                             />
                             <input
                                 type="text"
                                 placeholder="Model"
                                 className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={model}
-                                onChange={(e) => setModel(e.target.value)}
+                                name='model_no'
+                                required
                             />
                             <input
                                 type="text"
                                 placeholder="Staff No"
                                 className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={staffNo}
-                                onChange={(e) => setStaffNo(e.target.value)}
+                                name='staff_no'
+                                required
                             />
                             <input
                                 type="email"
                                 placeholder="Email"
                                 className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                name='staff_email'
+                                required
                             />
                             <input
                                 type="text"
                                 placeholder="Department"
                                 className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={department}
-                                onChange={(e) => setDepartment(e.target.value)}
+                                name='department_name'
+                                required
                             />
                             <input
-                                type="text"
+                                type="date"
                                 placeholder="Date of Request"
                                 className="form-input mt-2 mb-4 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
-                                value={dateOfRequest}
-                                onChange={(e) => setDateOfRequest(e.target.value)}
+                                name='date_request'
+                                required
                             />
                             <button
                                 type="submit"
@@ -145,4 +118,4 @@ function  RequestFormPage() {
     );
 }
 
-export default RequestFormPage;
+export default Request;

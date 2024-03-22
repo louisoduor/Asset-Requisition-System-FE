@@ -1,18 +1,11 @@
 import  { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import UserAccountPage from './accountUser'; // Import the AccountPage component
 
 
-function UserMainPage() {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+function AvailableAssets() {
+    
     const [devices, setDevices] = useState([]);
-   
-
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
-
-
 
     useEffect(() => {
         const fetchedDevices = [
@@ -28,28 +21,10 @@ function UserMainPage() {
 
     return (
         <div className="relative flex grow mr-5 h-screen">
-
-            {/* Conditional rendering of the AccountPage component */}
-            {/* {showAccountPage && <UserAccountPage />} */}
-
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <img src="../src/assets/LOGO.png" alt="Logo" className="h-80 w-80 opacity-30" style={{ margin: 'auto' }} />
-            </div>
-
+       
             <div className="flex flex-col flex-1 ml-5">
                 <div className="text-lg font-bold pl-4 py-2 text-orange-500">
-                    <button onClick={toggleSidebar} className="sm:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 mr-4 inline-block"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                    Home (USER)
+                AVAILABLE  ASSETS (USER)
                 </div>
 
               
@@ -75,7 +50,7 @@ function UserMainPage() {
                                     <td className="border px-4 py-2">{device.status}</td>
                                     <td className="border px-4 py-2">
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                                        <Link to ="request-form" className='capitalize'>Request</Link>   
+                                        <Link to ="request-form" className="text-lg font-bold" >Request</Link>   
                                         </button>
                                     </td>
                                 </tr>
@@ -88,4 +63,4 @@ function UserMainPage() {
     );
 }
 
-export default UserMainPage;
+export default AvailableAssets;

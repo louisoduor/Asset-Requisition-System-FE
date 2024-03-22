@@ -1,58 +1,51 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import AdminMainPage from './Admin/AdminMainPage';
+
 import RequestAdminPage from './Admin/Requests';
-
-
-import UserMainPage from './User/mainpageUser';
 import MyRequestPage from './User/myRequest';
-import RequestFormPage from './User/requestForm';
-
-
 import SignUp from './Auth/Signup';
 import Login from './Auth/Login';
-
-import AdminSharedComponent from './Admin/AdminSharedComponent';
-import AdminDashboard from './Admin/AdminDashboard';
 import AssignFormPage from './Admin/assign';
 import UserSharedComponent from './User/UserSharedComponent';
 import AuthSharedComponent from './Auth/AuthSharedComponent';
+import AvailableAssets from './User/availableAssets';
+import AdminDashboard from './Admin/AdminDashboard';
+import AdminProfile from './Admin/accountAdmin';
+import AddAssetPage from './Admin/add';
+import AdminAssets from './Admin/Assets';
+import AdminSharedComponent from './Admin/AdminSharedComponent';
+import Usermodal1 from './User/Usermodal';
+import Request from './User/RequestForm';
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-            {/* LOGIN */}
+                {/* Authentication Routes */}
                 <Route path="/" element={<AuthSharedComponent/>}>
                     <Route index element={<Login />} />
                     <Route path="signup" element={<SignUp />} />
                 </Route>
-                {/* ADMIN */}
+
+                {/* Admin Routes */}
                 <Route path="admin" element={<AdminSharedComponent />}>
-                    <Route index element={<AdminMainPage />} />
-                    <Route
-                        path="admin-dashboard"
-                        element={<AdminDashboard />}
-                    />
-                    <Route
-                        path="admin-requests"
-                        element={<RequestAdminPage />}
-                    />
-                    <Route
-                        path="admin-requests/admin-assign"
-                        element={<AssignFormPage />}
-                    />
+                    <Route index element={<AdminDashboard />} />
+                    <Route path="admin-dashboard" element={<AdminDashboard />} />
+                    <Route path="admin-account" element={<AdminProfile />} />
+                    <Route path="admin-assets" element={<AdminAssets />} />
+                    <Route path="admin-requests" element={<RequestAdminPage />} />
+                    <Route path="admin-requests/admin-assign" element={<AssignFormPage />} />
+                    <Route path="admin-addform" element={<AddAssetPage />} />
                 </Route>
-            {/* USER */}
-                <Route path="user" element={<UserSharedComponent />}>
-                    <Route index element={<UserMainPage />} />
-                    {/* <Route path ="user-dashboard" element={<Dashboard/>}/> */}
+
+                {/* User Routes */}
+                <Route path="user" element={<UserSharedComponent/>}>
+                    <Route index element={<AvailableAssets />} />
+                    <Route path="user-account" element={<Usermodal1 />} />
                     <Route path="user-requests" element={<MyRequestPage />} />
-                    <Route
-                        path="request-form"
-                        element={<RequestFormPage />}
-                    />
+                    <Route path="available-assets" element={<AvailableAssets />} />
+                    <Route path="request-form" element={<Request />} />
                 </Route>
             </Routes>
         </BrowserRouter>

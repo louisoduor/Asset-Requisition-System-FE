@@ -15,4 +15,4 @@ return <div className="flex">
 
 }
 
-export default UserSharedComponent
+export default UserSharedComponent 
