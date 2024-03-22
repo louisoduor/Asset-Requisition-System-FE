@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+// import { logOut } from '../Auth/logout';
+
 
 const NavUser = () => {
     return (
@@ -34,6 +36,7 @@ const NavUser = () => {
                     </li>
                 </ul>
             </nav>
+            {/* onClick = {logOut}  */}
             <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">
                 Logout
             </button>

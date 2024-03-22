@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import {auth} from '../config/firebaseConfig'
+import {auth} from '../config/firebaseConfig'
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -8,9 +9,14 @@ const Login = () => {
         password:""
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData)
+        try {
+            await signInWithEmailAndPassword(auth,formData.email,formData.password)
+        }catch(error){
+            alert(error)
+            console.error(error)
+        }     
         
     };
 
