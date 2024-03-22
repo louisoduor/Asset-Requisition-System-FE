@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+// import { logOut } from '../Auth/logout';
+
 import React, { useState } from 'react';
 import UserIcon from '../assets/user.png';
 import requestsIcon from '../assets/request.png';
@@ -42,6 +44,13 @@ function NavUser() {
                         <img src={availableIcon} alt="Available" onClick={handleLinkClick} className="h-14 w-14 mr-2" />
                         <Link to="available-assets" className="text-lg font-bold" onClick={handleLinkClick}>A.Available</Link>
                     </li>
+                </ul>
+            </nav>
+            {/* onClick = {logOut}  */}
+            <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">
+                Logout
+            </button>
+        </aside>
                     </ul>
                 </nav>
                 <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">Logout</button>
@@ -65,6 +74,7 @@ function NavUser() {
                 </div>
             </div>
         </div>
+
     );
 }
 

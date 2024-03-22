@@ -1,29 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../config/firebaseConfig'
+import {  auth } from '../config/firebaseConfig'
 
 const SignUp = () => {
-    
-
-    
     const [formData, setFormData] = useState({
         email: '',
         password: '',
-        admin:'false'
     });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await  createUserWithEmailAndPassword(auth, formData.email, formData.password)
-            .then((userCredential) => {               
-                console.log(userCredential.user);
-                
-            })
-            .catch((error) => {
-                alert(error.errorMessage)
-            
-            });
+        try {
+            await  createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        }catch (error){
+            alert(error)
+            console.error(error)
+        }
     };
 
     const handleChange = (e) => {
