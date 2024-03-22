@@ -18,7 +18,6 @@ import AssignFormPage from './Admin/assign';
 
 
 import AvailableAssets from './User/availableAssets';
-import RequestForm from './User/RequestForm';
 import AdminDashboard from './Admin/AdminDashboard';
 import AdminProfile from './Admin/accountAdmin';
 import AddAssetPage from './Admin/add';
@@ -27,6 +26,8 @@ import AdminAssets from './Admin/Assets';
 import AdminSharedComponent from './Admin/AdminSharedComponent'
 import UserSharedComponent from './User/UserSharedComponent'
 import Usermodal1 from './User/Usermodal';
+import Request from './User/RequestForm';
+
 
 
 
@@ -94,7 +95,7 @@ function App() {
                     
                     <Route
                         path="available-assets/request-form"
-                        element={<RequestForm />}
+                        element={<Request/>}
                     />
                 </Route>
             </Routes>
