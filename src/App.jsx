@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import './App.css';
+
 import AdminMainPage from './Admin/AdminMainPage';
 import RequestAdminPage from './Admin/Requests';
 
@@ -9,7 +9,7 @@ import UserMainPage from './User/mainpageUser';
 import MyRequestPage from './User/myRequest';
 import RequestFormPage from './User/requestForm';
 
-import LandingPage from './Auth/LandingPage';
+
 import SignUp from './Auth/Signup';
 import Login from './Auth/Login';
 
@@ -17,24 +17,18 @@ import AdminSharedComponent from './Admin/AdminSharedComponent';
 import AdminDashboard from './Admin/AdminDashboard';
 import AssignFormPage from './Admin/assign';
 import UserSharedComponent from './User/UserSharedComponent';
+import AuthSharedComponent from './Auth/AuthSharedComponent';
 
 function App() {
     return (
         <BrowserRouter>
-            {/* LOGIN */}
             <Routes>
-                <Route path="/" element={<LandingPage />}>
+            {/* LOGIN */}
+                <Route path="/" element={<AuthSharedComponent/>}>
                     <Route index element={<Login />} />
                     <Route path="signup" element={<SignUp />} />
                 </Route>
-
-                
-                {/* <UserMainPage/>
-      <UserAccountPage/>
-      <MyRequestPage/>
-      <RequestFormPage/> */}
                 {/* ADMIN */}
-
                 <Route path="admin" element={<AdminSharedComponent />}>
                     <Route index element={<AdminMainPage />} />
                     <Route
@@ -62,13 +56,6 @@ function App() {
                 </Route>
             </Routes>
         </BrowserRouter>
-
-        // <AdminMainPage/>
-        // <RequestAdminPage/>
-        // <AddAssetPage/>
-        // <AssignFormPage/>
-        // <AdminSharedComponent/>
-        // <AccountAdminPage/>
     );
 }
 

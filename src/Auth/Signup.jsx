@@ -1,25 +1,38 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebaseConfig'
 
 const SignUp = () => {
+    
+
+    
     const [formData, setFormData] = useState({
-        email:"",
-        password:""
+        email: '',
+        password: '',
+        admin:'false'
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData)
-        
+        await  createUserWithEmailAndPassword(auth, formData.email, formData.password)
+            .then((userCredential) => {               
+                console.log(userCredential.user);
+                
+            })
+            .catch((error) => {
+                alert(error.errorMessage)
+            
+            });
     };
 
     const handleChange = (e) => {
-        const {name,value} = e.target
-        setFormData((prev)=>{
-
-            return {...prev,[name]:value }})
+        const { name, value } = e.target;
+        setFormData((prev) => {
+            return { ...prev, [name]: value };
+        });
     };
-    
+
     return (
         <div className="form-container my-20 ">
             <form
@@ -34,7 +47,7 @@ const SignUp = () => {
                     >
                         email:
                     </label>
-                    <input 
+                    <input
                         onChange={handleChange}
                         className=" py-1.5 px-2.5 bg-gray-100 outline-orange-400"
                         type="email"
@@ -50,7 +63,7 @@ const SignUp = () => {
                     >
                         password:
                     </label>
-                    <input 
+                    <input
                         onChange={handleChange}
                         className=" py-1.5 px-2.5 bg-gray-100 outline-orange-400"
                         type="password"
@@ -59,11 +72,21 @@ const SignUp = () => {
                     />
                 </div>
                 <div className="mt-4 text-sm font-bold">
-                    <button type="submit"className="px-5 py-2 hover:bg-blue-900 bg-orange-500 text-white uppercase rounded border-0">
+                    <button
+                        type="submit"
+                        className="px-5 py-2 hover:bg-blue-900 bg-orange-500 text-white uppercase rounded border-0"
+                    >
                         sign up
                     </button>
                 </div>
-                <div><Link to="/" className="text-blue-900 hover:text-orange-400 font-bold capitalize underline">log in</Link></div>
+                <div>
+                    <Link
+                        to="/"
+                        className="text-blue-900 hover:text-orange-400 font-bold capitalize underline"
+                    >
+                        log in
+                    </Link>
+                </div>
             </form>
         </div>
     );

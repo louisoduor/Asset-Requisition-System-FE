@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 
-const LandingPage = () =>{
+const AuthSharedComponent = () =>{
 
 
     return < >
@@ -9,4 +9,4 @@ const LandingPage = () =>{
 }
 
 
-export default LandingPage
+export default AuthSharedComponent
