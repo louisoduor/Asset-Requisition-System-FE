@@ -1,4 +1,11 @@
-on: push
+name: Asset-Requisition-System-FE with Docker
+
+on: 
+    push:
+        branches: [main]
+    pull_request: 
+        branches: [main]
+  
 jobs:
     first-job:
         runs-on: windows-latest
