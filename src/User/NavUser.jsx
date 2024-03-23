@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
-// import { logOut } from '../Auth/logout';
-
 import React, { useState } from 'react';
 import UserIcon from '../assets/user.png';
 import requestsIcon from '../assets/request.png';
 import availableIcon from '../assets/available.png';
-import logo2 from "/src/assets/logo2.png"
-
+import logo2 from "/src/assets/logo2.png";
 
 function NavUser() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -22,39 +19,31 @@ function NavUser() {
     return (
         <div className="relative flex h-screen">
             {/* Sidebar */}
-            <div className={`bg-blue-950 text-white w-64 flex flex-col ${isSidebarOpen ? '' : 'hidden sm:flex'}`}>
+            <aside className={`bg-blue-950 text-white w-64 flex flex-col ${isSidebarOpen ? '' : 'hidden sm:flex'}`}>
                 <div className="flex items-center justify-center px-4 py-6">
                     <img src={logo2} alt="Logo" className="h-26 w-29 mb-12" />
                 </div>
 
                 <nav className="flex-1 flex flex-col">
                     <div>
-                    <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                    <img src={UserIcon} alt="Dashboard" className="h-11 w-11 mr-2" />
-                        <Link to="user-account" className="text-lg font-bold" onClick={handleLinkClick}>Account</Link>
-                    </li>
+                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
+                            <img src={UserIcon} alt="Dashboard" className="h-11 w-11 mr-2" />
+                            <Link to="user-account" className="text-lg font-bold" onClick={handleLinkClick}>Account</Link>
+                        </li>
                     </div>
                     <ul>
-                    
-                    <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                        <img src={requestsIcon} alt="Requests"onClick={handleLinkClick}  className="h-16 w-16 mr-2" />
-                        <Link to="user-requests" className="text-lg font-bold" onClick={handleLinkClick}>MyRequests</Link>
-                    </li>
-                    <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
-                        <img src={availableIcon} alt="Available" onClick={handleLinkClick} className="h-14 w-14 mr-2" />
-                        <Link to="available-assets" className="text-lg font-bold" onClick={handleLinkClick}>A.Available</Link>
-                    </li>
-                </ul>
-            </nav>
-            {/* onClick = {logOut}  */}
-            <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">
-                Logout
-            </button>
-        </aside>
+                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
+                            <img src={requestsIcon} alt="Requests" onClick={handleLinkClick} className="h-16 w-16 mr-2" />
+                            <Link to="user-requests" className="text-lg font-bold" onClick={handleLinkClick}>MyRequests</Link>
+                        </li>
+                        <li className="flex items-center justify-center px-4 py-2 cursor-pointer hover:bg-blue-900">
+                            <img src={availableIcon} alt="Available" onClick={handleLinkClick} className="h-14 w-14 mr-2" />
+                            <Link to="available-assets" className="text-lg font-bold" onClick={handleLinkClick}>A.Available</Link>
+                        </li>
                     </ul>
                 </nav>
                 <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">Logout</button>
-            </div>
+            </aside>
 
             {/* Main Content */}
             <div className="flex flex-col flex-1">
@@ -74,7 +63,6 @@ function NavUser() {
                 </div>
             </div>
         </div>
-
     );
 }
 
