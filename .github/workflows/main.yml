@@ -1,41 +1,37 @@
 name: Asset-Requisition-System-FE with Docker
 
-
-on: 
-    push:
-        branches: [main]
-    pull_request: 
-        branches: [main]
-  
-
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-    first-job:
-        runs-on: windows-latest
-        steps:
-            - run: node --version
-            - run: npm --version
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Node.js version
+        run: node --version
+      - name: Check npm version
+        run: npm --version
 
-    push_to_registry: 
-        name: Push Docker image to Docker Hub
-        runs-on: windows-latest
-        steps:
-            - name: Check out the repo
-              uses: actions/checkout@v3
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
 
-            - name: Login to Docker Hub
-              uses: docker/login-action@v2
-              with:
-                  username: ${{ secrets.DOCKERHUB_USERNAME }}
-                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-            - name: Build and push Docker image
-              uses: docker/build-push-action@v4
-              with:
-                  context: DockerFileFolder/
-                  push: true
-                  tags: ronnielangat/asset-requisition-system-fe:latest
-
-    
-    
-            
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: DockerFileFolder/
+          push: true
+          tags: 
+            sirlouis/assetrequisitionapplication:latest
