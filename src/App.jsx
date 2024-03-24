@@ -26,8 +26,8 @@ function App() {
             <Routes>
                 {/* Authentication Routes */}
                 <Route path="/" element={<AuthSharedComponent/>}>
-                    <Route index element={<Login setUser ={setUser}/>} />
-                    <Route path="signup" element={<SignUp />} />
+                    <Route index element={<Login setUser = {setUser}/>} />
+                    <Route path="signup" element={<SignUp setUser ={ setUser}/>} />
                 </Route>
 
                 {/* Admin Routes */}
