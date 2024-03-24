@@ -45,7 +45,7 @@ function App() {
                     <Route path="user-account" element={<Usermodal1 />} />
                     <Route path="user-requests" element={<MyRequestPage />} />
                     <Route path="available-assets" element={<AvailableAssets />} />
-                    <Route path="request-form" element={<Request />} />
+                    <Route path="available-assets/request-form" element={<Request />} />
                 </Route>
             </Routes>
         </BrowserRouter>

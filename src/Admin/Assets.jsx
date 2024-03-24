@@ -51,7 +51,6 @@ function AdminAssets() {
                                 <th className="text-left border px-4 py-2">Brand</th>
                                 <th className="text-left border px-4 py-2">Model</th>
                                 <th className="text-left border px-4 py-2">Status</th>
-                                <th className="text-left border px-4 py-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,9 +62,6 @@ function AdminAssets() {
                                 <td className="border px-4 py-2">{devices.model}</td>
                                 <td className="border px-4 py-2">{devices.status}</td>
                                 <td className="border px-4 py-2">
-                                    <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                                        Assign
-                                    </button>
                                 </td>
                             </tr>
                         </tbody>
