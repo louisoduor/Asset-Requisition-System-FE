@@ -30,54 +30,49 @@ const SignUp = () => {
         <div className="form-container my-20 ">
             <form
                 onSubmit={handleSubmit}
-                className="form flex flex-col items-center gap-y-3 bg-white shadow "
+                className="form flex flex-col items-center bg-grey-200 "
             >
                 <img src="src/assets/LOGO.png" alt="" />
+                <div className="pb-5">
+                    <h1 className="text-blue-950 font-extrabold text-2xl">ASSET REQUISITION APPLICATION</h1>
+                </div>
+                <div className="pb-5">
+                    <h1 className="text-blue-950 font-extrabold text-1xl">Create Your Account</h1>
+                </div>
                 <div className="flex flex-col gap-y-3">
-                    <label
-                        htmlFor="email"
-                        className="capitalize font-semi-bold "
-                    >
-                        email:
-                    </label>
                     <input
                         onChange={handleChange}
-                        className=" py-1.5 px-2.5 bg-gray-100 outline-orange-400"
+                        className="form-input mt-4 mb-2 block w-80 h-10 placeholder-gray-600 font-bold text-lg pl-3 rounded-lg"
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="donjoe@mail.com"
+                        placeholder="Email"
                     />
                 </div>
                 <div className="flex flex-col gap-y-3">
-                    <label
-                        htmlFor="password"
-                        className="capitalize font-semi-bold"
-                    >
-                        password:
-                    </label>
                     <input
                         onChange={handleChange}
-                        className=" py-1.5 px-2.5 bg-gray-100 outline-orange-400"
+                        className="form-input mt-4 mb-2 block w-80 h-10 placeholder-gray-600 font-bold text-lg pl-3 rounded-lg"
                         type="password"
                         id="password"
                         name="password"
+                        placeholder='Password'
                     />
                 </div>
                 <div className="mt-4 text-sm font-bold">
                     <button
                         type="submit"
-                        className="px-5 py-2 hover:bg-blue-900 bg-orange-500 text-white uppercase rounded border-0"
+                        className="bg-orange-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-900 transition-colors duration-300"
                     >
-                        sign up
+                        Sign up
                     </button>
                 </div>
                 <div>
                     <Link
                         to="/"
-                        className="text-blue-900 hover:text-orange-400 font-bold capitalize underline"
+                        className="text-blue-950 hover:text-orange-400 font-bold capitalize underline"
                     >
-                        log in
+                        Back
                     </Link>
                 </div>
             </form>
