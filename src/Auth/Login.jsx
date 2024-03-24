@@ -1,14 +1,18 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import {  useState } from 'react';
+import { Link , useNavigate} from 'react-router-dom';
 import {auth} from '../config/firebaseConfig'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-const Login = () => {
+const Login = ({setUser}) => {
+    
     const [formData, setFormData] = useState({
         email:"",
         password:""
     });
+
+    // Firebase authentication 
 console.log(auth?.currentUser?.email)
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -16,7 +20,16 @@ console.log(auth?.currentUser?.email)
         }catch(error){
             alert(error)
             console.error(error)
-        }     
+        } 
+        
+        if(auth?.currentUser?.email){
+            setUser({email:auth?.currentUser?.email})
+            if(auth?.currentUser?.email == "admin@gmail.com" ){
+                navigate('/admin')
+            }else{
+                navigate("/user")
+            }
+        }
         
     };
 
