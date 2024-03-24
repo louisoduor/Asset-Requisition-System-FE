@@ -2,6 +2,8 @@ import {  useState } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 import {auth} from '../config/firebaseConfig'
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import PropTypes from 'prop-types';  
+
 
 const Login = ({setUser}) => {
     
@@ -21,7 +23,7 @@ console.log(auth?.currentUser?.email)
             alert(error)
             console.error(error)
         } 
-        
+        // Page redirect
         if(auth?.currentUser?.email){
             setUser({email:auth?.currentUser?.email})
             if(auth?.currentUser?.email == "admin@gmail.com" ){
@@ -91,3 +93,8 @@ console.log(auth?.currentUser?.email)
 };
 
 export default Login;
+
+
+Login.propTypes = {  
+    setUser: PropTypes.func,  
+   }  

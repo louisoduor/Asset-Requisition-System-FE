@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import {createUserWithEmailAndPassword } from 'firebase/auth';
 import {  auth } from '../config/firebaseConfig'
+import PropTypes from 'prop-types';  
 
-const SignUp = () => {
+const SignUp = ({setUser}) => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
-
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -17,6 +18,14 @@ const SignUp = () => {
             alert(error)
             console.error(error)
         }
+        // Page redirect
+        if(auth?.currentUser?.email){
+            setUser({email:auth?.currentUser?.email})
+            if(auth?.currentUser?.email == "admin@gmail.com" ){
+                navigate('/admin')
+            }else{
+                navigate("/user")
+            }}
     };
 
     const handleChange = (e) => {
@@ -86,3 +95,8 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
+SignUp.propTypes = {  
+    setUser: PropTypes.func,  
+   } 
