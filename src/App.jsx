@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -19,12 +20,13 @@ import Usermodal1 from './User/Usermodal';
 import Request from './User/RequestForm';
 
 function App() {
+    const [user,setUser] = useState(null);
     return (
         <BrowserRouter>
             <Routes>
                 {/* Authentication Routes */}
                 <Route path="/" element={<AuthSharedComponent/>}>
-                    <Route index element={<Login />} />
+                    <Route index element={<Login setUser ={setUser}/>} />
                     <Route path="signup" element={<SignUp />} />
                 </Route>
 

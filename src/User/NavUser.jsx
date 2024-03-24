@@ -42,7 +42,7 @@ function NavUser() {
                         </li>
                     </ul>
                 </nav>
-                <button className="text-lg font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">Logout</button>
+                <Link to="/" className="text-lg text-center capitalize font-bold mt-auto px-4 py-2 bg-orange-500 hover:bg-orange-600">Log Out</Link>
             </aside>
 
             {/* Main Content */}
