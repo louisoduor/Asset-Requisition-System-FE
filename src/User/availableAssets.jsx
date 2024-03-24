@@ -50,7 +50,7 @@ function AvailableAssets() {
                                     <td className="border px-4 py-2">{device.status}</td>
                                     <td className="border px-4 py-2">
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                                        <Link to ="/available-assets/request-form" className="text-lg font-bold" >Request</Link>   
+                                        <Link to ="request-form" className="text-lg font-bold" >Request</Link>   
                                         </button>
                                     </td>
                                 </tr>
