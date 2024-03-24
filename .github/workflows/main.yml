@@ -23,10 +23,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Build and push to docker
+      - name: Build and push to Docker
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
             image: sirlouis/assetrequisitionapplication
             registry: docker.io
             username: ${{ secrets.DOCKERHUB_USERNAME}}
             password: ${{ secrets.DOCKERHUB_TOKEN }}
+            dockerfile: Docker/Dockerfile
