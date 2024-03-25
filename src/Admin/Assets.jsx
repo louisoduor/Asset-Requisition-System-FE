@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LOGO from "/src/assets/LOGO.png"
 
-
 function AdminAssets() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [devices, setDevices] = useState([]);
@@ -10,14 +9,16 @@ function AdminAssets() {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-
     useEffect(() => {
         const fetchDevices = async () => {
             try {
-                const response = await fetch('http://localhost:8000/3'); 
+                const response = await fetch('http://localhost:8000/get-all-assets');
                 if (response.ok) {
                     const data = await response.json();
-                    setDevices(data);
+                    console.log('Fetched devices:', data);
+                    // Convert object to array
+                    const devicesArray = Object.values(data);
+                    setDevices(devicesArray);
                 } else {
                     console.error('Failed to fetch devices');
                 }
@@ -25,9 +26,10 @@ function AdminAssets() {
                 console.error('Error fetching devices:', error);
             }
         };
-
+    
         fetchDevices();
     }, []);
+    
 
     return (
         <div className="relative flex h-screen grow">
@@ -54,16 +56,16 @@ function AdminAssets() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="bg-white">
-                                <td className="border px-4 py-2">{devices.id}</td>
-                                <td className="border px-4 py-2">{devices.name}</td>
-                                <td className="border px-4 py-2">{devices.serial}</td>
-                                <td className="border px-4 py-2">{devices.brand}</td>
-                                <td className="border px-4 py-2">{devices.model}</td>
-                                <td className="border px-4 py-2">{devices.status}</td>
-                                <td className="border px-4 py-2">
-                                </td>
-                            </tr>
+                            {devices.map(device => (
+                                <tr className="bg-white" key={device.id}>
+                                    <td className="border px-4 py-2">{device.id}</td>
+                                    <td className="border px-4 py-2">{device.name}</td>
+                                    <td className="border px-4 py-2">{device.serial}</td>
+                                    <td className="border px-4 py-2">{device.brand}</td>
+                                    <td className="border px-4 py-2">{device.model}</td>
+                                    <td className="border px-4 py-2">{device.status}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

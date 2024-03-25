@@ -1,33 +1,36 @@
-import  { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 function AvailableAssets() {
-    
     const [devices, setDevices] = useState([]);
 
     useEffect(() => {
-        const fetchedDevices = [
-            { id: 1, name: 'Device 1', serialNumber: 'SN001', brand: 'Brand 1', status: 'Active' },
-            { id: 2, name: 'Device 2', serialNumber: 'SN002', brand: 'Brand 2', status: 'Inactive' },
-            { id: 3, name: 'Device 3', serialNumber: 'SN003', brand: 'Brand 3', status: 'Active' },
-            { id: 4, name: 'Device 4', serialNumber: 'SN004', brand: 'Brand 4', status: 'Active' },
-            { id: 5, name: 'Device 5', serialNumber: 'SN005', brand: 'Brand 5', status: 'Active' },
-            { id: 6, name: 'Device 6', serialNumber: 'SN006', brand: 'Brand 6', status: 'Active' },
-        ];
-        setDevices(fetchedDevices);
+        const fetchDevices = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/get-all-assets');
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Fetched devices:', data);
+                    // Convert object to array
+                    const devicesArray = Object.values(data);
+                    setDevices(devicesArray);
+                } else {
+                    console.error('Failed to fetch devices');
+                }
+            } catch (error) {
+                console.error('Error fetching devices:', error);
+            }
+        };
+    
+        fetchDevices();
     }, []);
 
     return (
         <div className="relative flex grow mr-5 h-screen">
-       
             <div className="flex flex-col flex-1 ml-5">
                 <div className="text-lg font-bold pl-4 py-2 text-orange-500">
-                AVAILABLE  ASSETS (USER)
+                    AVAILABLE ASSETS (USER)
                 </div>
-
-              
                 <div className="overflow-x-auto">
                     <table className="w-full ml-5">
                         <thead>
@@ -45,12 +48,12 @@ function AvailableAssets() {
                                 <tr key={device.id} className="bg-white">
                                     <td className="border px-4 py-2">{device.id}</td>
                                     <td className="border px-4 py-2">{device.name}</td>
-                                    <td className="border px-4 py-2">{device.serialNumber}</td>
+                                    <td className="border px-4 py-2">{device.serial}</td>
                                     <td className="border px-4 py-2">{device.brand}</td>
                                     <td className="border px-4 py-2">{device.status}</td>
                                     <td className="border px-4 py-2">
                                         <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                                        <Link to ="request-form" className="text-lg font-bold" >Request</Link>   
+                                            <Link to="request-form" className="text-lg font-bold">Request</Link>
                                         </button>
                                     </td>
                                 </tr>

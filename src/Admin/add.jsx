@@ -1,30 +1,47 @@
-import { useState } from 'react';
-import NavAdmin from './NavAdmin';
-import  LOGO from "/src/assets/LOGO.png"
-
+import React, { useState } from 'react';
+import LOGO from "/src/assets/LOGO.png";
 
 function AddAssetPage() {
     const [assetName, setAssetName] = useState('');
     const [serialNumber, setSerialNumber] = useState('');
     const [brand, setBrand] = useState('');
     const [model, setModel] = useState('');
+    const [status, setStatus] = useState(''); 
 
-
-
-    const handleAddAsset = () => {
-        // Perform actions to add the asset, such as sending data to a backend API
-        console.log('Adding asset:', { assetName, serialNumber, brand, model });
-
-        // Clear input fields after adding the asset
-        setAssetName('');
-        setSerialNumber('');
-        setBrand('');
-        setModel('');
+    const handleAddAsset = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/create-asset', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: assetName,
+                    serial: serialNumber,
+                    brand: brand,
+                    model: model,
+                    status: status // Include status in the request payload
+                }),
+            });
+            if (response.ok) {
+                console.log('Asset added successfully');
+                
+                setAssetName('');
+                setSerialNumber('');
+                setBrand('');
+                setModel('');
+                setStatus(''); 
+                window.alert('Asset added successfully'); 
+            } else {
+                console.error('Failed to add asset');
+            }
+        } catch (error) {
+            console.error('Error adding asset:', error);
+        }
     };
 
     return (
         <div className="relative flex h-screen grow">
-        
             {/* Logo Watermark */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <img src={LOGO} alt="Logo" className="h-80 w-80 opacity-30" />
@@ -63,10 +80,19 @@ function AddAssetPage() {
                         <input
                             type="text"
                             placeholder="Model"
-                            className="form-input mt-2 mb-4 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
+                            className="form-input mt-2 mb-2 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
                             value={model}
                             onChange={(e) => setModel(e.target.value)}
                         />
+                        
+                        <input
+                            type="text"
+                            placeholder="Status"
+                            className="form-input mt-2 mb-4 block w-full h-10 placeholder-gray-500 font-bold text-lg pl-3"
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}
+                        />
+                        
                         <button
                             className="bg-orange-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-orange-600 transition-colors duration-300"
                             onClick={handleAddAsset}
@@ -74,8 +100,6 @@ function AddAssetPage() {
                             Add Asset
                         </button>
                     </div>
-
-                    {/* Main Content Goes Here */}
                 </div>
             </div>
         </div>
