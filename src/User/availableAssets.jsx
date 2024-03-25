@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function AvailableAssets() {
     const [devices, setDevices] = useState([]);
+    const navigate = useNavigate(); // Using useNavigate hook to navigate
 
     useEffect(() => {
         const fetchDevices = async () => {
@@ -21,9 +22,13 @@ function AvailableAssets() {
                 console.error('Error fetching devices:', error);
             }
         };
-    
+
         fetchDevices();
     }, []);
+
+    const handleRequestClick = (device) => {
+        navigate('/user/available-assets/request-form', { state: { selectedAsset: device } });
+    };
 
     return (
         <div className="relative flex grow mr-5 h-screen">
@@ -52,8 +57,11 @@ function AvailableAssets() {
                                     <td className="border px-4 py-2">{device.brand}</td>
                                     <td className="border px-4 py-2">{device.status}</td>
                                     <td className="border px-4 py-2">
-                                        <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                                            <Link to="request-form" className="text-lg font-bold">Request</Link>
+                                        <button 
+                                            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+                                            onClick={() => handleRequestClick(device)}
+                                        >
+                                            Request
                                         </button>
                                     </td>
                                 </tr>
