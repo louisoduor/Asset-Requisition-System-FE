@@ -24,7 +24,7 @@ const SignUp = ({setUser}) => {
             if(auth?.currentUser?.email == "admin@gmail.com" ){
                 navigate('/admin')
             }else{
-                navigate("/user")
+                navigate("/")
             }}
     };
 

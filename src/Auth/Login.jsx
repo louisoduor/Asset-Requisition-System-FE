@@ -18,21 +18,25 @@ console.log(auth?.currentUser?.email)
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth,formData.email,formData.password)
-        }catch(error){
-            alert(error)
-            console.error(error)
-        } 
-        // Page redirect
-        if(auth?.currentUser?.email){
-            setUser({email:auth?.currentUser?.email})
-            if(auth?.currentUser?.email == "admin@gmail.com" ){
-                navigate('/admin')
-            }else{
-                navigate("/user")
+            await signInWithEmailAndPassword(auth, formData.email, formData.password);
+            // Page redirect
+            if (auth?.currentUser?.email) {
+                setUser({ email: auth?.currentUser?.email });
+                if (auth?.currentUser?.email === "admin@gmail.com") {
+                    navigate('/admin');
+                } else {
+                    navigate("/user");
+                }
+            }
+        } catch (error) {
+            alert(error);
+            console.error(error);
+            // Check if error is due to invalid credentials
+            if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+                // Navigate to the login page
+                navigate("/login");
             }
         }
-        
     };
 
     const handleChange = (e) => {
