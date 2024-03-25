@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "asset-requisition-b4828"
-  }
+    "default": "asset-requisition-application",
+    "y": "asset-requisition-application"
+  },
+  "targets": {},
+  "etags": {}
 }
